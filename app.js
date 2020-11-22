@@ -99,4 +99,12 @@ const lockAndLoad = () => {
 }
 
 
+// Battle
+const engage = () => {
+  defender.attack();
+  invader.attack();
+  lockAndLoad();
+}
+
+
 init(); // Initialize
