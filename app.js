@@ -39,3 +39,22 @@ class Alien {
 }
 
 const invader = new Alien()
+
+
+// Initiate Game
+const init = () => {
+  alert('Welcome to SPACE+++BATTLE!');
+  const response = prompt(`Enter 'p' to play or 'q' to exit.`);
+  if (response.toLowerCase() === 'q') {
+    alert(`Good-bye!`)
+  } else if (response.toLowerCase() === 'p') {
+    alert('Earth has been attacked by a horde of aliens!\n\nYou are the captain of the USS Schwarzenegger.\n\nYour mission is to destroy every last alien ship.')
+    lockAndLoad()
+  } else {
+    alert(`I don't understand your response.\n\nTry again next time!`)
+  }
+}
+
+
+
+init(); // Initialize
