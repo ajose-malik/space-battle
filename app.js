@@ -56,5 +56,47 @@ const init = () => {
 }
 
 
+// Check Status
+const status = () => {
+  alert(`Your Status >>> HULL: ${defender.hull} | FIREPOWER: ${defender.firepower} | ACCURACY: ${defender.accuracy*100}%\n\nAlien#${invaderCount} Status >>> HULL: ${invader.hull} | FIREPOWER: ${invader.firepower} | ACCURACY: ${Math.floor(invader.accuracy*100)}%`)
+}
+
+
+// Get Ready to Battle
+let invaderCount = 6;
+
+const lockAndLoad = () => {
+
+  status()
+
+  if (invaderCount < 1 && defender.hull > 0) {
+    alert(`YOU HAVE DEFEATED ALL ALIENS`)
+  } else if (invaderCount > 0 && defender.hull < 1) {
+    alert(`YOU LOSE!`)
+  } else if (invaderCount < 1 && defender.hull < 1) {
+    alert(`TIE GAME!`)
+  }
+
+  while (invaderCount > 1 && defender.hull > 0) {
+    if (invader.hull < 1) {
+      invaderCount--
+      invader.hull = Math.floor(Math.random() * (7 - 3) + 3)
+    }
+
+    const response = prompt(`Enter 'a' to attack or 'q' to retreat`)
+    if (response.toLowerCase() === 'q') {
+      alert(`YOU LOSE!`)
+      defender.hull = 0;
+      defender.firepower = 0;
+      defender.accuracy = 0;
+      status()
+    } else if (response.toLowerCase() === 'a') {
+      engage()
+    } else {
+      alert(`I don't understand your response.\n\n Try again next time!`)
+    }
+  }
+}
+
 
 init(); // Initialize
